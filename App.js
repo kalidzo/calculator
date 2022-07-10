@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Buttons from "./Buttons";
 import Screen from "./Screen";
-// import { useState } from 'react';
 import { ThingsProvider } from "./thingsContext";
 
 export default function App() {
@@ -41,8 +40,6 @@ export default function App() {
     else{
       setScreenItems([...screenItems, newItem]);
     }
-    
-    // setScreenItems([eval(text)])
   };
   const clearScreenItems = () => {
     setScreenItems([]);
@@ -90,7 +87,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    // display: "flex",
     flex:1,
     flexDirection: "column",
     backgroundColor: "#242227",
