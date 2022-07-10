@@ -9,7 +9,6 @@ const TopButtons = ( {styles, buttonHandler} ) => {
         {text:"C", id:"c", color:"#ba6735"},
         {text:"(", id:"(", color:"#cea041"},
         {text:")", id:")", color:"#cea041"},
-        // {text:"÷", id:"÷"},
     ]
     const clearScreenItems = useContext(ThingsContext)
 
