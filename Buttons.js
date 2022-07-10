@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     width: 285,
-    // height:"75%",
   },
   button: {
     display: "flex",
