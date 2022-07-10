@@ -7,16 +7,39 @@ import { ThingsProvider } from "./thingsContext";
 
 export default function App() {
   const [screenItems, setScreenItems] = useState([]);
+  const countOf= (item)=>{
+    let count = screenItems.filter(x => x == item).length
+    return count
+  }
   const buttonHandler = (newItem) => {
     let lelement = screenItems[screenItems.length - 1]; // last element of array
-    if(((newItem == "+" || newItem == "-" || newItem=="÷" || newItem=="×"|| newItem==".") && (lelement=="+" ||lelement== "-" ||lelement== "÷" ||lelement=="×" || lelement=="."))){
+    if(((newItem == "+" || newItem=="÷" || newItem=="×"|| newItem==".") && (lelement=="+" ||lelement== "-" ||lelement== "÷" ||lelement=="×" || lelement=="." || lelement=="(" || screenItems.length==0))){
       setScreenItems(screenItems);
-    } else if((newItem=="0" && lelement=="÷")||(newItem=="." && screenItems.length==0)){
+    } 
+    else if(lelement=="-" && (newItem=="-" || newItem == "+" || newItem=="÷" || newItem=="×"|| newItem==".")){
+      setScreenItems(screenItems);
+    }
+    else if( newItem =="(" && (screenItems.length==0 || lelement=="-")){
+      setScreenItems([...screenItems, newItem]);
+    }
+    else if((newItem=="0" && lelement=="÷")||(newItem=="." && screenItems.length==0)){
       setScreenItems(screenItems)
+    }
+    else if((newItem == ")") &&(lelement== "+" || lelement== "-" || lelement== "÷" || lelement== "×" || lelement=="(")){
+      setScreenItems(screenItems);
+    }
+    else if((newItem == ")") &&(countOf("(")<countOf(")")+1)){
+      setScreenItems(screenItems);
+
+    }
+    else if( newItem == "(" && (lelement!= "+" && lelement!= "÷" && lelement!= "×")){
+      setScreenItems(screenItems);
+    }
+    else if( newItem == ")" && (lelement== "+" && lelement== "-" && lelement== "÷" && lelement== "×")){
+      setScreenItems(screenItems);
     }
     else{
       setScreenItems([...screenItems, newItem]);
-      console.log(true);
     }
     
     // setScreenItems([eval(text)])
@@ -32,6 +55,7 @@ export default function App() {
   };
   const equalHandler = () => {
     let text = ''
+    let lelement = screenItems[screenItems.length - 1];
     for (let index = 0; index < screenItems.length; index++) {
       let element = screenItems[index];
       if (element == '÷') {
@@ -41,7 +65,14 @@ export default function App() {
       }
       text += element
     }
-    setScreenItems([eval(text)])
+      try {
+        setScreenItems([eval(text)])
+      } catch (error) {
+        console.log(error);
+      }
+      
+    
+    
   }
   return (
     <View style={styles.container}>
