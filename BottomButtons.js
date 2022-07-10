@@ -6,7 +6,6 @@ const BottomButtons = ({ styles, buttonHandler, backSpaceHandler }) => {
     { text: ".", id: "." },
     { text: "0", id: "0" },
     { text: "b", id: "b" },
-    // {text:"÷", id:"÷"},
   ];
   return (
     <View style={styles.container}>
