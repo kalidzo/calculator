@@ -45,20 +45,15 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "column",
-    // justifyContent:"flex-start"
-    // flexWrap: "wrap",
     width: "20%",
-    // height:"75%",
   },
   button: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    // marginLeft: 5,
     marginTop: 7,
     height: 85,
     width: 85,
-    // marginVertical: "auto",
     borderRadius: 42.5,
     backgroundColor: "#2e2b32",
   },
@@ -66,11 +61,9 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    // marginLeft: 5,
     marginTop: 7,
     height: 85,
     width: 85,
-    // marginVertical: "auto",
     borderRadius: 42.5,
     backgroundColor: "#eea70d",
   }
